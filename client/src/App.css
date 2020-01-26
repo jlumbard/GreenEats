@@ -1,5 +1,8 @@
+
 .App {
   text-align: center;
+  font-family: 'Mukta Mahee', sans-serif;
+
 }
 
 .App-logo {
@@ -22,6 +25,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: 'Mukta Mahee', sans-serif;
+
 }
 
 .App-link {
@@ -35,10 +40,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-  @font-face {
-  font-family: 'Beattingvile';
-  src: url('/fonts/Beattingvile.otf') format('opentype');
-   font-style: normal;
-  font-weight: normal;
 }

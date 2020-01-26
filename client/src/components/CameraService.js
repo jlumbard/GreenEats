@@ -2,7 +2,11 @@ import React from 'react';
 import Camera, { IMAGE_TYPES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 
-
+const styles = {
+  video : {
+    borderRadius: 50
+  }
+};
 class CameraService extends React.Component{
    handleTakePhoto (dataUri, handler) {
     //where Brock is working
@@ -47,8 +51,7 @@ class CameraService extends React.Component{
         console.log("Freshwater: " +  x.Freshwater/930);
         console.log("StressWeightedWater: " +  x.StressWeightedWater/36474);
         var avg = x.LandUse/26 + x.GHG/9 + x.Acid/47 + x.Eutrophying/47 + x.Freshwater/930 + x.StressWeightedWater/36474;
-        window.alert("This food has an average of "+ avg);
-
+        //window.alert("This food has an average of "+ avg);
 
         localStorage.setItem('LandUse', x.LandUse);
         localStorage.setItem('GHG', x.GHG);
@@ -74,7 +77,7 @@ class CameraService extends React.Component{
         };
 
 
-        handler(data);
+        handler(data, x.food, avg);
 
         //make sure you clear these when you head back to the screen. 
       }
@@ -86,10 +89,12 @@ class CameraService extends React.Component{
 
   render(){
     return(
-  <Camera
+      <div style={styles.video}>
+  <Camera style={{borderRadius:"50px"}}
       onTakePhoto = { (dataUri) => { this.handleTakePhoto(dataUri, this.props.handler); } }
       imageType = {IMAGE_TYPES.JPG}
     />
+    </div>
     );
   }
     

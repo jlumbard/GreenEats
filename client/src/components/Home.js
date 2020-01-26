@@ -10,29 +10,25 @@ import FormControl from 'react-bootstrap/FormControl';
 import Nav from 'react-bootstrap/Nav';
 import CameraService from './CameraService';
 import Media from 'react-bootstrap/Media';
-import {Bar} from 'react-chartjs-2';
-
-
-
+import Modal from 'react-bootstrap/Modal';
+import {Bar, defaults} from 'react-chartjs-2';
+//defaults.global.animation = true;
 const styles = {
     mainImage: {
       padding: 0,
       marginRight: 0,
-        height: 1356,
+        height: "100vh",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundImage: `url(${"/images/banner2edit2.jpg"})`
-
+        backgroundImage: `url(${"/images/blurredbanner2.png"})`
     }
   };
-
 const styleOther = {
   navbarInside: {
   background: 'white',
   position: 'fixed',
   zIndex: 500,
-
   marginLeft: 0,
   marginRight: 0,
  paddingTop: '2%',
@@ -41,59 +37,48 @@ const styleOther = {
   right: 0,
   }
 };
-
 const headerStyles = {
   fontStyles: {
-    fontSize: '500%',
+    fontSize: '300%',
     paddingLeft: '10%',
-    fontFamily: 'Beattingvile'
+    fontFamily: 'Mukta Mahee'
   },
   logoStyles:{
     paddingLeft: '2%',
     width: '15%',
     height: '15%'
-
-
   }
 };
-
 const tabStyles = {
   styles : {
     width: '65%',
-
   }
 };
-
 const firstrowStyles = {
   firstRow: {
     lineHeight : '50%',
     }
-
 };
-
 const cameraStyles = {
   camera: {
     paddingTop: '15%',
     position: 'center',
-
+    height: "60vh",
   }
 };
-
 const bodyStyles = {
   header1: {
-    fontSize: '500%',
-    fontFamily: 'Beattingvile',
-    marginLeft: '16%',
-
-
+    fontSize: '350%',
+    fontFamily: 'Mukta Mahee',
+    color:"white"
   },
   header2: {
-    fontSize: '500%',
-    fontFamily: 'Beattingvile',
-    marginLeft: '24%'
+    fontSize: '350%',
+    fontFamily: 'Mukta Mahee',
+    textAlign: "center",
+    color:"white"
   }
 };
-
 const data = {
   labels: ['Land Use', 'GHG Emissions', 'Acid Emissions', 'Eutrophying Emissions', 'Freshwater Withdrawls', 'Stress-Weighted Water Use'],
   datasets: [
@@ -108,37 +93,37 @@ const data = {
     }
   ]
 };
-
-
+const showModal = false;
 class Home extends Component {
-
   constructor(props) {
     super(props);
-    this.state = {data: data, sty: {visibility:"hidden",backgroundColor:'rgba(255,255,255,0.5)',}};
+    this.state = {data: data, showModal: showModal, food:"none", avg: null};
     this.handler = this.handler.bind(this);
+    this.close =  this.close.bind(this);
   }
-  handler(array) {
+  handler(array, food, avg) {
     this.setState({
       data: array,
-      sty: {visibility:"visible",backgroundColor:'rgba(255,255,255,0.5)',}
+      showModal: true,
+      food:food,
+      avg: avg
     })
-
   }
-
-
+  close() {
+    this.setState({
+      showModal: false
+    })
+  }
 render() {
     console.log(this.state.data)
     return (
       <div className="Home" style={styles.mainImage}>
-        
-      <Container>
       <Row style = {firstrowStyles.firstRow}>
       <Nav className="mr-auto">
       <Navbar style={styleOther.navbarInside} >
       <Navbar.Brand href="#home" style = {headerStyles.fontStyles}>Green Eats
       <Image className = "justify-content-start" src="images/logoEvenBetter.jpg" style = {headerStyles.logoStyles}/>
       </Navbar.Brand>
-
         <Nav className="justify-content-end" activeKey="/home" style = {tabStyles.styles}>
         <Nav.Item>
           <Nav.Link href="#home"> About Us </Nav.Link>
@@ -153,39 +138,27 @@ render() {
         </Navbar>
     </Nav>
     </Row>
-    </Container>
-
     <div className = "Body" style = {cameraStyles.camera}>
-    <Container>
-    <h1 style= {bodyStyles.header1}> <span style= {{backgroundColor: '#FFFFFF'}}>  Check your food, </span></h1>
-    <h1 style= {bodyStyles.header2}> <span style= {{backgroundColor: '#FFFFFF'}}>start sustainable eating today </span> </h1>
+    <h1 style= {bodyStyles.header2}> <span style= {{}}>Check your food, start sustainable eating today </span> </h1>
     <CameraService handler = {this.handler}>
-
     </CameraService>
-    </Container>
-
-      <Container className = "chartContainer" style={this.state.sty}>
+      <Modal show={this.state.showModal} onHide={this.close} centered size='lg'> 
+      <Modal.Header closeButton><Modal.Title><h1>We identified this as a {this.state.food}</h1></Modal.Title></Modal.Header>
+      <Modal.Body style={{height:'50%'}}>
+      <h3>The average sustainability score of the {this.state.food} is {this.state.avg}</h3>
       <Bar
           data={this.state.data}
-          width={100}
-          height={500}
+          width={200}
+          height={150}
           options={{
-            maintainAspectRatio: false
+            maintainAspectRatio: true
           }}
         />
-
-
-
-      </Container>
-
-
-
+      </Modal.Body>
+      </Modal>
     </div>
       </div>
-
     );
   }
 }
-
-
 export default Home;
