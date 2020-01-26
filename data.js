@@ -11,7 +11,7 @@ module.exports = {
 },
 
 foodImpacts:{
-	beef: 40,				// Beef herd (herds dedicated to beef production have greater emissions)
+	Beef: 40,				// Beef herd (herds dedicated to beef production have greater emissions)
 	lamb: 24,
 	cheese: 21,			// Dairy herd
 	chocolate: 19,
@@ -32,11 +32,12 @@ foodImpacts:{
 	corn: 1,
 	cassava: 1,
 	soymilk: 0.9,
-	peas: 0.9,
-	bananas: 0.7,
-	rootVegetables: 0.4,
-	apples: 0.4,
+	pea: 0.9,
+	Banana: 0.7,
+	rootVegetable: 0.4,
+	apple: 0.4,
 	citrusFruit: 0.3,
+	orange: 0.3,
 	nuts: 0.3
 }
 }

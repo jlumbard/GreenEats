@@ -21,26 +21,53 @@ app.post('/api/world', (req, res) => {
 const vision = require('@google-cloud/vision');
 const client = new vision.ImageAnnotatorClient();
 
-var data = require('./data.js');
+var data = require('./perFUdata.js');
 
-console.log(data.foodImpacts);
+var datarows = data.foodImpacts.split("\n");
+
+
 
 app.post('/api/image', (req, res) => {
   console.log(req.body);
 
   //get the image in the body here and then push it below
   //path not used, need to add img from request body
+
+  
+
   const request = {
     image: {
       source: {imageUri:'./banana.jpg'}
     }
   };
 
-  client.webDetection('yam.jpg'
+  client.webDetection('banana.jpg'
   ).then((label)=> {
-    console.log(label[0].webDetection.webEntities);
 
-    res.send(
-    label[0].webDetection.webEntities[0].description)}).catch(err=>{console.log("err "+err)});
+    var targetRow;
+  datarows.forEach(x=>{
+    targetRow = x.split(",");
+    if(targetRow[0]==label[0].webDetection.webEntities[0].description){
+    //do fuzzy matching
+
+    
+    console.log(label[0].webDetection.webEntities);
+    console.log(x);
+
+    res.send({
+      food:label[0].webDetection.webEntities[0].description,
+      LandUse: targetRow[1],
+      GHG:targetRow[2],
+      Acid:targetRow[3],
+      Eutrophying:targetRow[4],
+      Freshwater:targetRow[5],
+      StressWeightedWater:targetRow[6],
+    }
+      )
+    }
+  })
+
+    })
+    .catch(err=>{console.log("err "+err)});
 });
 app.listen(port, () => console.log(`Listening on port ${port}`));
