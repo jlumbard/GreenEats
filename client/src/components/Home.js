@@ -94,6 +94,8 @@ render() {
       <Nav className="mr-auto">
       <Navbar style={styleOther.navbarInside} >
       <Navbar.Brand href="#home" style = {headerStyles.fontStyles}>Green Eats </Navbar.Brand>
+      <Image className = "justify-content-start" src="images/plantBetter.jpg" style= {{display:'inline-block', width: 60, height: 60}}/>
+
         <Nav className="justify-content-end" activeKey="/home" style = {tabStyles.styles}>
         <Nav.Item>
           <Nav.Link href="#home"> About Us </Nav.Link>
@@ -113,7 +115,7 @@ render() {
     <div className = "Body" style = {cameraStyles.camera}>
     <Container>
     <h1 style= {bodyStyles.header1}> <span style= {{backgroundColor: '#FFFFFF'}}>  Check your food, </span></h1>
-    <h1 style= {bodyStyles.header2}> <span style= {{backgroundColor: '#FFFFFF'}}>start sustainable eating today </span> </h1>
+    <h1 style= {bodyStyles.header2}> <span style= {{backgroundColor: '#FFFFFF'}}>sustainable eating today </span> </h1>
     <CameraService></CameraService>
     </Container>
     </div>
