@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+  @font-face {
+  font-family: 'Beattingvile';
+  src: url('/fonts/Beattingvile.otf') format('opentype');
+   font-style: normal;
+  font-weight: normal;
+}

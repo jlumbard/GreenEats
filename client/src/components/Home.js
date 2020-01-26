@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Nav from 'react-bootstrap/Nav';
 import CameraService from './CameraService';
+import Media from 'react-bootstrap/Media';
 
 
 const styles = {
@@ -28,20 +29,22 @@ const styleOther = {
   navbarInside: {
   background: 'white',
   position: 'fixed',
+  zIndex: 500,
 
   marginLeft: 0,
   marginRight: 0,
   padding:0,
   left: 0,
   right: 0,
-}
+  }
 };
 
 const headerStyles = {
   fontStyles: {
-    fontSize: '200%',
-    paddingLeft: '10%'
-}
+    fontSize: '500%',
+    paddingLeft: '10%',
+    fontFamily: 'Beattingvile'
+  }
 };
 
 const tabStyles = {
@@ -57,6 +60,13 @@ const firstrowStyles = {
 
 };
 
+const cameraStyles = {
+  camera: {
+    paddingTop: '20%',
+    position: 'center',
+
+  }
+}
 
 class Home extends Component {
 render() {
@@ -69,37 +79,25 @@ render() {
       <Navbar.Brand href="#home" style = {headerStyles.fontStyles}>Green Eats </Navbar.Brand>
         <Nav className="justify-content-end" activeKey="/home" style = {tabStyles.styles}>
         <Nav.Item>
-          <Nav.Link href="#home">About Us</Nav.Link>
+          <Nav.Link href="#home"> About Us </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#howitworks">How It Works</Nav.Link>
+          <Nav.Link href="#howitworks"> How It Works </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="#contact">Contact</Nav.Link>
+          <Nav.Link href="#contact"> Contact </Nav.Link>
         </Nav.Item>
         </Nav>
         </Navbar>
     </Nav>
     </Row>
+    </Container>
 
-        {/*<Row>
-          <Col sm>sm=true</Col>
-          <Col sm>sm=true</Col>
-          <Col sm>sm=true</Col>
-        </Row>
-
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-success">Search</Button>
-        </Form>*/}
-        {/*<h1> TEST PLS WORK </h1>*/}
-
-      </Container>
-      <Container>
-        <CameraService></CameraService>
-      </Container>
-
-
+    <div className = "Body" style = {cameraStyles.camera}>
+    <Container>
+    <CameraService></CameraService>
+    </Container>
+    </div>
       </div>
 
     );
