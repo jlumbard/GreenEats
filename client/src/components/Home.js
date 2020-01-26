@@ -116,7 +116,7 @@ render() {
     <div className = "Body" style = {cameraStyles.camera}>
     <Container>
     <h1 style= {bodyStyles.header1}> <span style= {{backgroundColor: '#FFFFFF'}}>  Check your food, </span></h1>
-    <h1 style= {bodyStyles.header2}> <span style= {{backgroundColor: '#FFFFFF'}}>sustainable eating today </span> </h1>
+    <h1 style= {bodyStyles.header2}> <span style= {{backgroundColor: '#FFFFFF'}}>start sustainable eating today </span> </h1>
     <CameraService></CameraService>
     </Container>
     </div>
