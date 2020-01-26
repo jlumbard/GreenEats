@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Nav from 'react-bootstrap/Nav';
-import CameraService from './CameraService';
+
 
 const styles = {
     mainImage: {
@@ -18,12 +18,19 @@ const styles = {
         backgroundRepeat: 'no-repeat',
         backgroundImage: `url(${"/images/banner2edit2.jpg"})`
     }
-
   };
+
 const styleOther = {
   navbarInside: {
   background: 'white',
-  width: 'cover'
+  position: 'fixed',
+  marginLeft: 0,
+}
+};
+
+const headerStyles = {
+  fontStyles: {
+    fontSize: '200%'
 }
 };
 
@@ -33,34 +40,22 @@ render() {
     return (
       <div className="Home" style={styles.mainImage}>
       <Container>
-      <Navbar style={styleOther.navbarInside}>
-      <Navbar.Brand href="#home" >Green Eats</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="mr-auto">
-      <Nav.Link href="#home" >About Us</Nav.Link>
-      <Nav.Link href="#howitworks">How It Works</Nav.Link>
-      <Nav.Link href="#contact">Contact</Nav.Link>
-
+      <Nav className="ml-auto">
+      <Navbar style={styleOther.navbarInside} >
+      <Navbar.Brand href="#home" style = {headerStyles.fontStyles}>Green Eats </Navbar.Brand>
+        <Nav className="justify-content-end" activeKey="/home">
+        <Nav.Item>
+          <Nav.Link href="#home">About Us</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="#howitworks">How It Works</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="#contact">Contact</Nav.Link>
+        </Nav.Item>
+        </Nav>
+        </Navbar>
     </Nav>
-    <Nav className="justify-content-end" activeKey="/home">
-      <Nav.Item>
-        <Nav.Link href="/home">Active</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="link-1">Link</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="link-2">Link</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="disabled" disabled>
-          Disabled
-        </Nav.Link>
-      </Nav.Item>
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>
 
         {/*<Row>
           <Col sm>sm=true</Col>
@@ -74,13 +69,9 @@ render() {
         </Form>*/}
         {/*<h1> TEST PLS WORK </h1>*/}
 
-
       </Container>
-      <Container>
-        
-      <CameraService></CameraService>
 
-      </Container>
+
       </div>
 
     );
