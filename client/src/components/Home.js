@@ -49,9 +49,9 @@ const headerStyles = {
     fontFamily: 'Beattingvile'
   },
   logoStyles:{
-    paddingLeft: '1%',
-    width: '5%',
-    height: '5%'
+    paddingLeft: '2%',
+    width: '15%',
+    height: '15%'
 
 
   }
@@ -119,8 +119,10 @@ render() {
       <Row style = {firstrowStyles.firstRow}>
       <Nav className="mr-auto">
       <Navbar style={styleOther.navbarInside} >
-      <Navbar.Brand href="#home" style = {headerStyles.fontStyles}>Green Eats </Navbar.Brand>
+      <Navbar.Brand href="#home" style = {headerStyles.fontStyles}>Green Eats
       <Image className = "justify-content-start" src="images/logoEvenBetter.jpg" style = {headerStyles.logoStyles}/>
+      </Navbar.Brand>
+
         <Nav className="justify-content-end" activeKey="/home" style = {tabStyles.styles}>
         <Nav.Item>
           <Nav.Link href="#home"> About Us </Nav.Link>
