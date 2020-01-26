@@ -36,9 +36,29 @@ function CameraService (props) {
         img: dataUri
       })
     }
-    ).then(x=>{
+    ).then(function(results){
       console.log("response:");
-      console.log(x);
+      results.json().then(x=>{
+        console.log("Land Use: " +  x.LandUse/26);
+        console.log("GHG: " +  x.GHG/9);
+        console.log("Acid: " +  x.Acid/47);
+        console.log("Eutrophying: " +  x.Eutrophying/47);
+        console.log("Freshwater: " +  x.Freshwater/930);
+        console.log("StressWeightedWater: " +  x.StressWeightedWater/36474);
+        var avg = x.LandUse/26 + x.GHG/9 + x.Acid/47 + x.Eutrophying/47 + x.Freshwater/930 + x.StressWeightedWater/36474;
+        window.alert("This food has an average of "+ avg);
+
+
+        localStorage.setItem('LandUse', x.LandUse);
+        localStorage.setItem('GHG', x.GHG);
+        localStorage.setItem('Acid', x.Acid);
+        localStorage.setItem('Eutrophying', x.Eutrophying);
+        localStorage.setItem('Freshwater', x.Freshwater);
+        localStorage.setItem('StressWeightedWater', x.StressWeightedWater);
+
+
+      }
+        );
     }
     )
 

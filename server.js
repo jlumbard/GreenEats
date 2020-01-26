@@ -11,7 +11,7 @@ app.use(bodyParser.json({limit:'50mb'}));
 app.use(bodyParser.urlencoded({limit:'50mb',extended: true}));
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "localhost:3001"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "localhost:3000"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -39,53 +39,38 @@ var fs = require('fs');
 
 app.post('/api/image', (req, res) => {
   console.log("req:")
-  console.log(req.body);
- 
-
-  //get the image in the body here and then push it below
-  //path not used, need to add img from request body
-
-
-  
-  
   //edits go here to switch from test images to real
-  const oldrequest = {
-    image: {
-      source: {imageUri:'./banana.jpg'}
-    }
-  };
-  // var tempVar;
-  // tempVar = req.body.img.split(",");
+  var tempVar;
+  tempVar = req.body.img.split(",");
   // console.log("----------------------------------------------");
-  
-  const oldworkingrequest = 
-    'banana.jpg'
-
   const request = {
     image: {
-      content: req.body.img
+      content: tempVar[1]
     }
   };
 
   console.log(request);
 
+  var hasBeenFound = 0;
   client.webDetection(request
   ).then((label)=> {
     console.log("Got here");
     console.log(label);
+    console.log(label[0].webDetection.webEntities)
     var targetRow;
   datarows.forEach(x=>{
     targetRow = x.split(",");
-    console.log("Split finished");
-    console.log(x);
+
+    if(label[0].webDetection.webEntities[0] == null){
+      res.send("NO MATCH FOUND");
+    }
 
     if(targetRow[0]==label[0].webDetection.webEntities[0].description){
     //do fuzzy matching
     
     console.log(label[0].webDetection.webEntities);
     console.log(x);
-
-    console.log("Request sending.....");
+    hasBeenFound++;
 
     res.send({
       food:label[0].webDetection.webEntities[0].description,
@@ -97,10 +82,7 @@ app.post('/api/image', (req, res) => {
       StressWeightedWater:targetRow[6],
     }
       )
-      console.log("Request sent!");
-
-    } else {
-      console.log("We're in the else");
+      return;
     }
   })
 
