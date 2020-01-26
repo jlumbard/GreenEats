@@ -51,6 +51,14 @@ class CameraService extends React.Component{
         console.log("Freshwater: " +  x.Freshwater/930);
         console.log("StressWeightedWater: " +  x.StressWeightedWater/36474);
         var avg = x.LandUse/26 + x.GHG/9 + x.Acid/47 + x.Eutrophying/47 + x.Freshwater/930 + x.StressWeightedWater/36474;
+        avg = Math.trunc(avg*100);
+        x.LandUse = Math.trunc(x.LandUse*100);
+        x.GHG = Math.trunc(x.GHG*100);
+        x.Acid = Math.trunc(x.Acid*100);
+        x.Eutrophying = Math.trunc(x.Eutrophying*100);
+        x.Freshwater = Math.trunc(x.Freshwater*100);
+        x.StressWeightedWater = Math.trunc(x.StressWeightedWater*100);
+
         //window.alert("This food has an average of "+ avg);
 
         localStorage.setItem('LandUse', x.LandUse);

@@ -39,8 +39,6 @@ const styleOther = {
 };
 const headerStyles = {
   fontStyles: {
-    fontSize: '300%',
-    paddingLeft: '10%',
     fontFamily: 'Mukta Mahee'
   },
   logoStyles:{
@@ -61,19 +59,19 @@ const firstrowStyles = {
 };
 const cameraStyles = {
   camera: {
-    paddingTop: '15%',
+    paddingTop: '15vh',
     position: 'center',
     height: "60vh",
   }
 };
 const bodyStyles = {
   header1: {
-    fontSize: '350%',
+    fontSize: '3em',
     fontFamily: 'Mukta Mahee',
     color:"white"
   },
   header2: {
-    fontSize: '350%',
+    fontSize: '3em',
     fontFamily: 'Mukta Mahee',
     textAlign: "center",
     color:"white"
