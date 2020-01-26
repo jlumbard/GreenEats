@@ -114,13 +114,15 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {data: data};
+    this.state = {data: data, sty: {visibility:"hidden",backgroundColor:'rgba(255,255,255,0.5)',}};
     this.handler = this.handler.bind(this);
   }
   handler(array) {
     this.setState({
-      data: array
+      data: array,
+      sty: {visibility:"visible",backgroundColor:'rgba(255,255,255,0.5)',}
     })
+
   }
 
 
@@ -162,7 +164,7 @@ render() {
     </CameraService>
     </Container>
 
-      <Container style={{backgroundColor:'rgba(255,255,255,0.5)',}}>
+      <Container className = "chartContainer" style={this.state.sty}>
       <Bar
           data={this.state.data}
           width={100}
