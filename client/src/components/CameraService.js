@@ -2,8 +2,9 @@ import React from 'react';
 import Camera, { IMAGE_TYPES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 
-function CameraService (props) {
-  function handleTakePhoto (dataUri) {
+
+class CameraService extends React.Component{
+   handleTakePhoto (dataUri, handler) {
     //where Brock is working
 
     // Do stuff with the photo...
@@ -55,7 +56,25 @@ function CameraService (props) {
         localStorage.setItem('Eutrophying', x.Eutrophying);
         localStorage.setItem('Freshwater', x.Freshwater);
         localStorage.setItem('StressWeightedWater', x.StressWeightedWater);
+        
 
+        const data = {
+          labels: ['Land Use', 'GHG Emissions', 'Acid Emissions', 'Eutrophying Emissions', 'Freshwater Withdrawls', 'Stress-Weighted Water Use'],
+          datasets: [
+            {
+              label: '% Relative to Global Average',
+              backgroundColor: 'rgba(202, 94, 72, 0.6)',
+              borderColor: 'rgba(202, 94, 72, 1)',
+              borderWidth: 1,
+              hoverBackgroundColor: 'rgba(29, 56, 210, 0.6)',
+              hoverBorderColor: 'rgba(29, 56, 210, 1)',
+              data: [x.LandUse/26, x.GHG/9, x.Acid/47, x.Eutrophying/47, x.Freshwater/930, x.StressWeightedWater/36474]
+            }
+          ]
+        };
+
+
+        handler(data);
 
         //make sure you clear these when you head back to the screen. 
       }
@@ -65,12 +84,17 @@ function CameraService (props) {
 
   }
 
-  return (
-    <Camera
-      onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
+  render(){
+    return(
+  <Camera
+      onTakePhoto = { (dataUri) => { this.handleTakePhoto(dataUri, this.props.handler); } }
       imageType = {IMAGE_TYPES.JPG}
     />
-  );
+    );
+  }
+    
+
+
 }
 
 export default CameraService;

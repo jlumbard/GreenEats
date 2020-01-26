@@ -95,23 +95,37 @@ const bodyStyles = {
 };
 
 const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ['Land Use', 'GHG Emissions', 'Acid Emissions', 'Eutrophying Emissions', 'Freshwater Withdrawls', 'Stress-Weighted Water Use'],
   datasets: [
     {
-      label: 'My First dataset',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
+      label: '% Relative to Global Average',
+      backgroundColor: 'rgba(202, 94, 72, 0.6)',
+      borderColor: 'rgba(202, 94, 72, 1)',
       borderWidth: 1,
-      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
-      data: [65, 59, 80, 81, 56, 55, 40]
+      hoverBackgroundColor: 'rgba(29, 56, 210, 0.6)',
+      hoverBorderColor: 'rgba(29, 56, 210, 1)',
+      data: [65, 59, 80, 81, 56, 55]
     }
   ]
 };
 
 
 class Home extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {data: data};
+    this.handler = this.handler.bind(this);
+  }
+  handler(array) {
+    this.setState({
+      data: array
+    })
+  }
+
+
 render() {
+    console.log(this.state.data)
     return (
       <div className="Home" style={styles.mainImage}>
         
@@ -143,14 +157,14 @@ render() {
     <Container>
     <h1 style= {bodyStyles.header1}> <span style= {{backgroundColor: '#FFFFFF'}}>  Check your food, </span></h1>
     <h1 style= {bodyStyles.header2}> <span style= {{backgroundColor: '#FFFFFF'}}>start sustainable eating today </span> </h1>
-    <CameraService>
+    <CameraService handler = {this.handler}>
 
     </CameraService>
     </Container>
 
-      <Container style={{backgroundColor:"white"}}>
+      <Container style={{backgroundColor:'rgba(255,255,255,0.5)',}}>
       <Bar
-          data={data}
+          data={this.state.data}
           width={100}
           height={500}
           options={{
