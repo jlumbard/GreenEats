@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Nav from 'react-bootstrap/Nav';
+import CameraService from './CameraService';
 
 
 const styles = {
@@ -93,6 +94,9 @@ render() {
         </Form>*/}
         {/*<h1> TEST PLS WORK </h1>*/}
 
+      </Container>
+      <Container>
+        <CameraService></CameraService>
       </Container>
 
 

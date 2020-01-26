@@ -57,6 +57,7 @@ function CameraService (props) {
         localStorage.setItem('StressWeightedWater', x.StressWeightedWater);
 
 
+        //make sure you clear these when you head back to the screen. 
       }
         );
     }
