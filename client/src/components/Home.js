@@ -34,7 +34,8 @@ const styleOther = {
 
   marginLeft: 0,
   marginRight: 0,
-  padding:0,
+ paddingTop: '2%',
+ paddingBottom: '2%',
   left: 0,
   right: 0,
   }
@@ -45,6 +46,13 @@ const headerStyles = {
     fontSize: '500%',
     paddingLeft: '10%',
     fontFamily: 'Beattingvile'
+  },
+  logoStyles:{
+    paddingLeft: '1%',
+    width: '5%',
+    height: '5%'
+
+
   }
 };
 
@@ -53,11 +61,11 @@ const tabStyles = {
     width: '65%',
 
   }
-}
+};
 
 const firstrowStyles = {
   firstRow: {
-    lineHeight : '65px'
+    lineHeight : '50%',
     }
 
 };
@@ -95,8 +103,7 @@ render() {
       <Nav className="mr-auto">
       <Navbar style={styleOther.navbarInside} >
       <Navbar.Brand href="#home" style = {headerStyles.fontStyles}>Green Eats </Navbar.Brand>
-      <Image className = "justify-content-start" src="images/plantBetter.jpg" style= {{display:'inline-block', width: 60, height: 60}}/>
-
+      <Image className = "justify-content-start" src="images/logoEvenBetter.jpg" style = {headerStyles.logoStyles}/>
         <Nav className="justify-content-end" activeKey="/home" style = {tabStyles.styles}>
         <Nav.Item>
           <Nav.Link href="#home"> About Us </Nav.Link>
