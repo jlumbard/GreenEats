@@ -1,4 +1,6 @@
-var supplyChain = {
+module.exports = {
+
+ supplyChain:{
 	LU: "Land Usage",
 	FM: "Farm",
 	AF: "Animal Feed",
@@ -6,13 +8,12 @@ var supplyChain = {
 	TR: "Transport",
 	RE: "Retail",
 	PA: "Packaging"
-};
+},
 
-var foodImpacts = {
-	beef1: 60,				// Beef herd (herds dedicated to beef production have greater emissions)
+foodImpacts:{
+	beef: 40,				// Beef herd (herds dedicated to beef production have greater emissions)
 	lamb: 24,
-	cheese: 21,
-	beef2: 21,				// Dairy herd
+	cheese: 21,			// Dairy herd
 	chocolate: 19,
 	coffee: 17,
 	prawns: 12,
@@ -20,10 +21,9 @@ var foodImpacts = {
 	pigMeat: 7,
 	poultryMeat: 6,
 	oliveOil: 6,
-	fish1: 5, 				// Farmed
+	fish: 4, 				// Farmed
 	eggs: 4.5,
-	rice: 4,
-	fish2: 3, 				// Wild
+	rice: 4,			// Wild
 	milk: 3,
 	caneSugar: 3,
 	groundnuts: 2.5,
@@ -38,4 +38,5 @@ var foodImpacts = {
 	apples: 0.4,
 	citrusFruit: 0.3,
 	nuts: 0.3
-};
+}
+}
