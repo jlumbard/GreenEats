@@ -50,7 +50,8 @@ const headerStyles = {
 
 const tabStyles = {
   styles : {
-    paddingLeft: '50%'
+    width: '65%',
+
   }
 }
 
