@@ -29,7 +29,7 @@ class CameraService extends React.Component{
     // xhr.setRequestHeader("Access-Control-Allow-Origin","*");
     // xhr.send(dataUri);
 
-    fetch('http://localhost:5000/api/image',{
+    fetch('/api/image',{
       method:'POST',
       headers: {
         'Accept': 'application/json',
@@ -51,7 +51,7 @@ class CameraService extends React.Component{
         console.log("Freshwater: " +  x.Freshwater/930);
         console.log("StressWeightedWater: " +  x.StressWeightedWater/36474);
         var avg = x.LandUse/26 + x.GHG/9 + x.Acid/47 + x.Eutrophying/47 + x.Freshwater/930 + x.StressWeightedWater/36474;
-        avg = Math.trunc(avg*100);
+        avg = Math.trunc(avg*100); 
         x.LandUse = Math.trunc(x.LandUse*100);
         x.GHG = Math.trunc(x.GHG*100);
         x.Acid = Math.trunc(x.Acid*100);
